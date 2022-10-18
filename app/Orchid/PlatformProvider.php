@@ -36,6 +36,10 @@ class PlatformProvider extends OrchidServiceProvider
                     return 6;
                 }),
 
+            Menu::make('Telescope')
+                ->icon('monitor')
+                ->route('platform.telescope'),
+
             Menu::make('Dropdown menu')
                 ->icon('code')
                 ->list([
