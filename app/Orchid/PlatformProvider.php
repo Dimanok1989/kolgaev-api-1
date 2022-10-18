@@ -37,7 +37,7 @@ class PlatformProvider extends OrchidServiceProvider
                 }),
 
             Menu::make('Telescope')
-                ->icon('monitor')
+                ->icon('fa.solid.video')
                 ->route('platform.telescope'),
 
             Menu::make('Dropdown menu')
