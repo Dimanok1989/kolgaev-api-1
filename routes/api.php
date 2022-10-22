@@ -22,4 +22,5 @@ Route::group(['prefix' => "user"], function () {
     })->name('api.user');
 
     Route::post('login', [Authorization::class, 'login'])->name('api.user.login');
+    Route::middleware('auth:sanctum')->get('logout', [Authorization::class, 'logout'])->name('api.user.logout');
 });

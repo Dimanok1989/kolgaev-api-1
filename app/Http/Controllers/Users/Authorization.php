@@ -34,4 +34,19 @@ class Authorization extends Controller
     {
         return new UserResource($this->service->login($request));
     }
+
+    /**
+     * Logout user
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout(Request $request)
+    {
+        $this->service->logout($request);
+
+        return response()->json([
+            'message' => "See you soon",
+        ]);
+    }
 }

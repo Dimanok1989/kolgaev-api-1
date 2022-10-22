@@ -34,4 +34,21 @@ class UserService implements UserServiceInterface
 
         return $user;
     }
+
+    /**
+     * Logout user
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return null
+     */
+    public function logout(Request  $request)
+    {
+        if (!$request->user())
+            return null;
+
+        if ($token = $request->user()->currentAccessToken())
+            $token->delete();
+
+        return null;
+    }
 }
