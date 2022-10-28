@@ -46,5 +46,17 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (ApiException $e, $request) {
+
+            if ($request->is('api/*')) {
+
+                $status_code = method_exists($e, 'getCode') ? $e->getCode() : 500;
+
+                return response()->json([
+                    'message' => $e->getMessage(),
+                ], $status_code);
+            }
+        });
     }
 }

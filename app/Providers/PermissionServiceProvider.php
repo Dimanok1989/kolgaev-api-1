@@ -25,11 +25,17 @@ class PermissionServiceProvider extends ServiceProvider
      */
     public function boot(Dashboard $dashboard)
     {
-        $permissions = ItemPermission::group(__('Disk'))
-            ->addPermission('disk.access', __('Access'))
-            ->addPermission('disk.download', __('Download files'))
-            ->addPermission('disk.upload', __('Upload files'));
+        $dashboard->registerPermissions(
+            ItemPermission::group(__('Disk'))
+                ->addPermission('disk.access', __('Access'))
+                ->addPermission('disk.download', __('Download files'))
+                ->addPermission('disk.upload', __('Upload files'))
+        );
 
-        $dashboard->registerPermissions($permissions);
+        $dashboard->registerPermissions(
+            ItemPermission::group(__('Finance'))
+                ->addPermission('finance.access', __('Access'))
+                ->addPermission('finance.showall', __('Show all'))
+        );
     }
 }

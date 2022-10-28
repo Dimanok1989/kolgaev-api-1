@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Http\Services\FinanceService;
+use App\Http\Services\Interfaces\FinanceServiceInterface;
 use App\Http\Services\Interfaces\UserServiceInterface;
 use App\Http\Services\UserService;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public $bindings = [
         UserServiceInterface::class => UserService::class,
-
+        FinanceServiceInterface::class => FinanceService::class,
     ];
 
     /**
@@ -43,6 +46,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        JsonResource::withoutWrapping();
     }
 }
